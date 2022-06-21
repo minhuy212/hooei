@@ -36,6 +36,7 @@
                 <td style="text-align: center; width:  calc(100%/7);"><?php echo $row_drinks['sold']; ?></td>
                 <td style="text-align: center; width:  calc(100%/7);"><?php if ($row_drinks['status'] == 1) echo "Visible"; else echo "Hide"; ?></td>
             </tr>
+            
     <?php
         }
     ?>

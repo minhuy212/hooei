@@ -6,12 +6,12 @@
     <div class="form-heading">
         <h2>DRINK</h2>
     </div>
-    <!-- <form action=""> -->
+    <form action="pages/main/handledrink.php" method="POST" enctype="multipart/form-data">
         <table id="showDetailDrink">
             <tr>
                 <th>CATEGORY</th>
                 <td>
-                    <select class="input" name="" id="category">
+                    <select class="input" name="category" id="category">
                         <?php
                             $query_category = mysqli_query($mysqli, "SELECT * FROM category");
                             while ($row_category = mysqli_fetch_array($query_category)) {
@@ -26,42 +26,42 @@
             <tr>
                 <th>IMAGE</th>
                 <td>
-                    <input class="input" type="file" id="drinkimage" placeholder="Drink image...">
+                    <input class="input" type="file" name="image" id="drinkimage" placeholder="Drink image..." required>
                 </td>
             </tr>
             <tr>
                 <th>NAME</th>
                 <td>
-                    <input class="input" type="text" id="drinkname" placeholder="Drink name...">
+                    <input class="input" type="text" name="name" id="drinkname" placeholder="Drink name..." required>
                 </td>
             </tr>
             <tr>
                 <th>PRICE</th>
                 <td>
-                    <input class="input" type="text" placeholder="Drink price...">
+                    <input class="input" type="number" name="price" id="drinkprice" placeholder="Drink price..." required>
                 </td>
             </tr>
             <tr>
                 <th>DATE</th>
                 <td>
-                    <input class="input" type="date" placeholder="Drink date...">
+                    <input class="input" type="date" name="date" id="drinkdate" placeholder="Drink date..." required>
                 </td>
             </tr>
             <tr>
                 <th>SOLD</th>
                 <td>
-                    <input class="input" type="number" placeholder="Drink sold...">
+                    <input class="input" type="number" placeholder="Drink sold..." value="0">
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input onclick="addDrink()" type="submit" name="" class="input" id="" value="ADD">
-                    <input type="submit" name="" class="input" id="" value="UPDATE">
-                    <input type="submit" name="" class="input" id="" value="REMOVE">
+                    <input type="submit" name="add" class="input" id="" value="ADD">
+                    <input type="submit" name="update" class="input disabled" id="" value="UPDATE" disabled>
+                    <input type="submit" name="remove" class="input disabled" id="" value="REMOVE" disabled>
                 </td>
             </tr>
         </table>
-    <!-- </form> -->
+    </form>
 </div>
 
 <div class="table-right">
@@ -108,8 +108,12 @@
         };   
         var category = document.getElementById('category').value; 
         var image = document.getElementById('drinkimage').value; 
+        var name = document.getElementById('drinkname').value; 
+        var price = document.getElementById('drinkprice').value; 
+        var date = document.getElementById('drinkdate').value; 
+
         // alert(image);
-        var path = "pages/main/updatedrinks.php?add";
+        var path = `pages/main/updatedrinks.php?add&category=`;
         xhttp.open("GET", path, true);
         xhttp.send();
     }
