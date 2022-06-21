@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 03:04 PM
+-- Generation Time: Jun 21, 2022 at 04:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `hooei'scoffee`
 --
+CREATE DATABASE IF NOT EXISTS `hooei'scoffee` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `hooei'scoffee`;
 
 -- --------------------------------------------------------
 
@@ -221,7 +223,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `drink`
 --
 ALTER TABLE `drink`
-  MODIFY `id_drink` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_drink` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
