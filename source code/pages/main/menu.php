@@ -8,26 +8,14 @@
         $row = mysqli_fetch_array($query);
         if ($row) {
             $new_drink = array(array('id_info' => date("Ymd").date(His).$row['id_drink'], 'id' => $row['id_drink'], 'name' => $row['name'], 'price' => $row['price'], 'amount' => $_POST['quantity'], 'note' => $_POST['note']));
-            if (isset($_SESSION['BILL'])) {
-                $found = 0;
-                // for ($i = 0 ; $i < sizeof($_SESSION['BILL']) ; $i++) {
-                //     if ($_SESSION['BILL'][$i]['id'] == $_POST['id']) { 
-                //         $_SESSION['BILL'][$i]['amount'] = $_POST['quantity'] + $_SESSION['BILL'][$i]['amount'];
-                //         $found = 1;
-                //         break;
-                //     }
-                // }
-                if ($found == 0) {
-                    array_push($_SESSION['BILL'], array('id_info' => date("Ymd").date(His).$row['id_drink'], 'id' => $row['id_drink'], 'name' => $row['name'], 'price' => $row['price'], 'amount' => $_POST['quantity'], 'note' => $_POST['note']));
-                }
+            if (isset($_SESSION['BILL'])) { 
+                array_push($_SESSION['BILL'], array('id_info' => date("Ymd").date(His).$row['id_drink'], 'id' => $row['id_drink'], 'name' => $row['name'], 'price' => $row['price'], 'amount' => $_POST['quantity'], 'note' => $_POST['note']));
             }
             else {
                 $_SESSION['BILL'] = $new_drink;
             } 
-            header("Location: index.php");
-            // unset($_SESSION['BILL']); 
-        }
-        // print_r($_SESSION['BILL']);
+            header("Location: index.php"); 
+        } 
     }
 ?>
 <div id="bill-detail" class="bill-detail">
